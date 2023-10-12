@@ -3,45 +3,56 @@ package com.bridgelabz;
 import java.util.Random;
 
 public class EmployeeWage {
+    public static final int IsFullTime = 1;
+    public static final int IsPartTime = 2;
+
+    static int EMP_WAGE_PER_HOUR = 20;
+    static int HOURS_PER_MONTH = 100;
+    static int DAYS_PER_MONTH = 20;
+
     public static void main(String[] args) {
-        final int IsFullTime = 1;
-        final int IsPartTime = 2;
-
-        int empWagePerHour = 20;
-
-        int fullDayHour = 8;
-        int partTimeHour = 4;
-        int DaysPerMonth = 20;
-
-        int salaryPerMonth = 0;
 
 
-        Random random = new Random();
+        int empHours = 0;
+        int salaryPerMonth;
+        int totalSalary = 0;
+        int totalEmpHour = 0;
+        int day = 0;
 
-        for(int day = 1; day <= DaysPerMonth; day++)
-        {
+        while (totalEmpHour < HOURS_PER_MONTH && day < DAYS_PER_MONTH) {
+            day++;
+            Random random = new Random();
+
             int empCheck = random.nextInt(3);
 
             switch (empCheck) {
                 case IsFullTime:
 
-                    salaryPerMonth += empWagePerHour * fullDayHour;
-                    System.out.println("Day " + day + " " + ": Employee is Full Time Present. Employee Wage Per Day : " + (empWagePerHour*fullDayHour));
-
+                    System.out.println("Employee is Full Time Present");
+                    empHours = 8;
                     break;
 
                 case IsPartTime:
 
-                    salaryPerMonth += empWagePerHour * partTimeHour;
-                    System.out.println("Day " + day + " " + ": Employee is Part Time Present. Employee Wage Per Day : " + (empWagePerHour*partTimeHour));
-
+                    System.out.println("Employee is Part Time Present");
+                    empHours = 4;
                     break;
 
                 default:
-                    System.out.println("Day " + day + " " + ": Employee is Absent. Employee Wage Per Day: 0");
+                    System.out.println("Employee is Absent");
+                    empHours = 0;
 
             }
+            salaryPerMonth = empHours * EMP_WAGE_PER_HOUR;
+            System.out.println("Day " + day + " - salary : " + salaryPerMonth);
+            totalSalary += salaryPerMonth;
+            totalEmpHour += empHours;
+
         }
-        System.out.println("Monthly Salary : " + salaryPerMonth);
+        System.out.println("Total Working Days : " + day);
+        System.out.println("Total Employee Hrs : " + totalEmpHour);
+        System.out.println("Total Salary : " + totalSalary);
+
+
     }
 }
