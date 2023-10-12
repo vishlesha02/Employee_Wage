@@ -8,28 +8,40 @@ public class EmployeeWage {
         final int IsPartTime = 2;
 
         int empWagePerHour = 20;
+
         int fullDayHour = 8;
         int partTimeHour = 4;
-        int salary;
+        int DaysPerMonth = 20;
+
+        int salaryPerMonth = 0;
+
 
         Random random = new Random();
-        int empCheck = random.nextInt(3);
 
-        switch (empCheck) {
-            case IsFullTime:
-                System.out.println("Employee is Full Time Present");
-                salary = empWagePerHour * fullDayHour;
-                System.out.println("Employee Wage = " + salary);
-                break;
+        for(int day = 1; day <= DaysPerMonth; day++)
+        {
+            int empCheck = random.nextInt(3);
 
-            case IsPartTime:
-                System.out.println("Employee is Part Time Present");
-                salary = empWagePerHour * partTimeHour;
-                System.out.println("Employee Wage = " + salary);
-                break;
+            switch (empCheck) {
+                case IsFullTime:
 
-            default:
-                System.out.println("Employee is Absent");
+                    salaryPerMonth += empWagePerHour * fullDayHour;
+                    System.out.println("Day " + day + " " + ": Employee is Full Time Present. Employee Wage Per Day : " + (empWagePerHour*fullDayHour));
+
+                    break;
+
+                case IsPartTime:
+
+                    salaryPerMonth += empWagePerHour * partTimeHour;
+                    System.out.println("Day " + day + " " + ": Employee is Part Time Present. Employee Wage Per Day : " + (empWagePerHour*partTimeHour));
+
+                    break;
+
+                default:
+                    System.out.println("Day " + day + " " + ": Employee is Absent. Employee Wage Per Day: 0");
+
+            }
         }
+        System.out.println("Monthly Salary : " + salaryPerMonth);
     }
 }
