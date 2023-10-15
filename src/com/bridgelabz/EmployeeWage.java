@@ -5,13 +5,11 @@ import java.util.Random;
 public class EmployeeWage {
     public static final int IsFullTime = 1;
     public static final int IsPartTime = 2;
-
     static int EMP_WAGE_PER_HOUR = 20;
     static int HOURS_PER_MONTH = 100;
     static int DAYS_PER_MONTH = 20;
 
-    public static void main(String[] args) {
-
+    public void EmpWage() {
 
         int empHours = 0;
         int salaryPerMonth;
@@ -55,4 +53,10 @@ public class EmployeeWage {
 
 
     }
+    public static void main(String[] args) {
+        EmployeeWage obj=new EmployeeWage();
+        obj.EmpWage();
+
+    }
+
 }
