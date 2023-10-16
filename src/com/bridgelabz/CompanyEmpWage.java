@@ -17,10 +17,10 @@ public class CompanyEmpWage {
 
     @Override
     public String toString() {
-        return "CompanyEmpWage " +
-                "company='" + company + '\'' +
-                ", empWagePerHour=" + empWagePerHour +
-                ", hoursPerMonth=" + hoursPerMonth +
-                ", daysPerMonth=" + daysPerMonth;
+        return "Company Employee Wage --> " +
+                "company = '" + company + '\'' +
+                ", empWagePerHour = " + empWagePerHour +
+                ", hoursPerMonth = " + hoursPerMonth +
+                ", daysPerMonth = " + daysPerMonth;
     }
 }

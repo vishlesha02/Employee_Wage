@@ -2,7 +2,11 @@ package com.bridgelabz;
 
 import java.util.Random;
 
-public class EmployeeWage {
+interface IEmployeeWage
+{
+     void EmpWage();
+}
+public class EmployeeWage implements IEmployeeWage {
     public static final int IsFullTime = 1;
     public static final int IsPartTime = 2;
 
@@ -23,7 +27,7 @@ public class EmployeeWage {
         {
 
             int totalEmpWage=this.EmpWage(companyEmpWageArray[i]);
-            System.out.println(companyEmpWageArray[i] + " Total Employee Wage : " + totalEmpWage);
+            System.out.println(companyEmpWageArray[i] + ", Total Employee Wage : " + totalEmpWage);
             System.out.println("- - - - - - - - - - - - - - - - - - - - ");
         }
     }
