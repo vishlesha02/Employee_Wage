@@ -5,21 +5,30 @@ import java.util.Random;
 public class EmployeeWage {
     public static final int IsFullTime = 1;
     public static final int IsPartTime = 2;
-    public static String company;
-    public static int empWagePerHour;
-    public static int hoursPerMonth;
-    public static int daysPerMonth;
 
-    public EmployeeWage(String company,int empWagePerHour,int hoursPerMonth,int daysPerMonth)
+    int numOfCompany = 0;
+
+   public CompanyEmpWage[] companyEmpWageArray= new CompanyEmpWage[3];
+
+   public void addCompany(String company,int empWagePerHour,int hoursPerMonth,int daysPerMonth)
+   {
+       companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empWagePerHour, hoursPerMonth, daysPerMonth);
+       numOfCompany++;
+   }
+
+
+    public void  EmpWage()
     {
-        this.company = company;
-        this.empWagePerHour = empWagePerHour;
-        this.hoursPerMonth = hoursPerMonth;
-        this.daysPerMonth = daysPerMonth;
+        for (int i=0;i< numOfCompany;i++)
+        {
 
+            int totalEmpWage=this.EmpWage(companyEmpWageArray[i]);
+            System.out.println(companyEmpWageArray[i] + " Total Employee Wage : " + totalEmpWage);
+            System.out.println("- - - - - - - - - - - - - - - - - - - - ");
+        }
     }
 
-    public static int EmpWage() {
+    public int EmpWage(CompanyEmpWage CompanyEmpWage) {
 
         int empHours;
         int salary = 0;
@@ -27,7 +36,8 @@ public class EmployeeWage {
         int totalEmpHour = 0;
         int day = 0;
 
-        while (totalEmpHour < hoursPerMonth && day < daysPerMonth) {
+
+        while (totalEmpHour < CompanyEmpWage.hoursPerMonth && day < CompanyEmpWage.daysPerMonth) {
             day++;
             Random random = new Random();
 
@@ -46,7 +56,7 @@ public class EmployeeWage {
                     empHours = 0;
 
             }
-            salary = empHours * empWagePerHour;
+            salary = empHours * CompanyEmpWage.empWagePerHour;
             totalSalary += salary;
             totalEmpHour += empHours;
 
@@ -55,16 +65,15 @@ public class EmployeeWage {
 
         }
         System.out.println("- - - - - - - - - - - - - - - - - - - - ");
-        System.out.println("Total Employee Wage for "  + company + " is : " + totalSalary);
+        System.out.println("Total Employee Wage for "  + CompanyEmpWage.company + " is : " + totalSalary);
         System.out.println("- - - - - - - - - - - - - - - - - - - - ");
         return totalSalary;
 
     }
     public static void main(String[] args) {
-        EmployeeWage obj1 = new EmployeeWage("Jio",20,60,18);
-        obj1.EmpWage();
-        EmployeeWage obj2 = new EmployeeWage("Reliance",30,80,22);
-        obj2.EmpWage();
-
+        EmployeeWage obj = new EmployeeWage();
+        obj.addCompany("Jio",30,80,22);
+        obj.addCompany("Reliance",20,60,20);
+        obj.EmpWage();
     }
 }
