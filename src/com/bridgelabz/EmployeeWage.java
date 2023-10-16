@@ -5,8 +5,21 @@ import java.util.Random;
 public class EmployeeWage {
     public static final int IsFullTime = 1;
     public static final int IsPartTime = 2;
+    public static String company;
+    public static int empWagePerHour;
+    public static int hoursPerMonth;
+    public static int daysPerMonth;
 
-    public int  EmpWage(String company,int empWagePerHour, int hoursPerMonth,int daysPerMonth) {
+    public EmployeeWage(String company,int empWagePerHour,int hoursPerMonth,int daysPerMonth)
+    {
+        this.company = company;
+        this.empWagePerHour = empWagePerHour;
+        this.hoursPerMonth = hoursPerMonth;
+        this.daysPerMonth = daysPerMonth;
+
+    }
+
+    public static int EmpWage() {
 
         int empHours;
         int salary = 0;
@@ -42,15 +55,16 @@ public class EmployeeWage {
 
         }
         System.out.println("- - - - - - - - - - - - - - - - - - - - ");
-        System.out.println("Total Employee Wage for "  + company + " is " + totalSalary);
+        System.out.println("Total Employee Wage for "  + company + " is : " + totalSalary);
         System.out.println("- - - - - - - - - - - - - - - - - - - - ");
         return totalSalary;
 
     }
     public static void main(String[] args) {
-        EmployeeWage obj=new EmployeeWage();
-        obj.EmpWage("Jio",30,70,23);
-        obj.EmpWage("Reliance",20,50,21);
+        EmployeeWage obj1 = new EmployeeWage("Jio",20,60,18);
+        obj1.EmpWage();
+        EmployeeWage obj2 = new EmployeeWage("Reliance",30,80,22);
+        obj2.EmpWage();
 
     }
 }
