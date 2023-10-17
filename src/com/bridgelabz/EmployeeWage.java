@@ -1,33 +1,32 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-interface IEmployeeWage
-{
-     void EmpWage();
-}
-public class EmployeeWage implements IEmployeeWage {
+
+public class EmployeeWage{
     public static final int IsFullTime = 1;
     public static final int IsPartTime = 2;
 
     int numOfCompany = 0;
 
-   public CompanyEmpWage[] companyEmpWageArray= new CompanyEmpWage[3];
+   public ArrayList<CompanyEmpWage> companyEmpWageArrayList= new ArrayList<>();
 
    public void addCompany(String company,int empWagePerHour,int hoursPerMonth,int daysPerMonth)
    {
-       companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, empWagePerHour, hoursPerMonth, daysPerMonth);
+       CompanyEmpWage companyEmpWage= new CompanyEmpWage(company, empWagePerHour, hoursPerMonth, daysPerMonth);
+       companyEmpWageArrayList.add(companyEmpWage);
        numOfCompany++;
    }
-
-
+   
     public void  EmpWage()
     {
         for (int i=0;i< numOfCompany;i++)
         {
 
-            int totalEmpWage=this.EmpWage(companyEmpWageArray[i]);
-            System.out.println(companyEmpWageArray[i] + ", Total Employee Wage : " + totalEmpWage);
+            CompanyEmpWage companyEmpWage=companyEmpWageArrayList.get(i);
+            int totalEmpWage = EmpWage(companyEmpWage);
+            System.out.println(companyEmpWageArrayList.get(i) + ", Total Employee Wage : " + totalEmpWage);
             System.out.println("- - - - - - - - - - - - - - - - - - - - ");
         }
     }
